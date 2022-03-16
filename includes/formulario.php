@@ -3,7 +3,7 @@
         <button class="btn btn-success"> Voltar </button>
     </a>
 
-    <h2 class="mt-03"> Cadastrar vaga </h2>
+    <h2 class="mt-3"> Cadastrar vaga </h2>
 
     <form method="POST" class="form-send">
         <div class="form-group">
