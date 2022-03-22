@@ -1,22 +1,22 @@
-<?php 
-    require __DIR__.'/vendor/autoload.php';
-    
-    use \App\entity\vaga; 
-    $obvaga = new vaga;
+<?php
+require __DIR__ . '/vendor/autoload.php';
 
-    if(isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])){
-        $obvaga->titulo = $_POST['titulo'];
-        $obvaga->descricao = $_POST['descricao'];
-        $obvaga->status = $_POST['status'];
-        // echo "<pre>"; print_r($_POST); echo "</pre>"; exit;
+use \App\entity\vaga;
 
-        $obvaga->cadastrar();
+$obvaga = new vaga;
 
-        header('location: index.php?status=success');
-        exit;
-    }
+if (isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])) {
+    $obvaga->titulo = $_POST['titulo'];
+    $obvaga->descricao = $_POST['descricao'];
+    $obvaga->status = $_POST['status'];
+    // echo "<pre>"; print_r($_POST); echo "</pre>"; exit;
 
-    require __DIR__.'/includes/header.php';
-    require __DIR__.'/includes/formulario.php';
-    require __DIR__.'/includes/footer.php';
-?>
+    $obvaga->cadastrar();
+
+    header('location: index.php?status=success');
+    exit;
+}
+
+require __DIR__ . '/includes/header.php';
+require __DIR__ . '/includes/formulario.php';
+require __DIR__ . '/includes/footer.php';

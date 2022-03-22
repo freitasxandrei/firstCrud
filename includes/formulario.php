@@ -18,10 +18,10 @@
 
         <div class="form-group">
             <label> Status </label>
-                <div>
-                    <div class="form-check form-check-inline">
+            <div>
+                <div class="form-check form-check-inline">
                     <label>
-                        <input type="radio" required name="status" value="s"> Ativo </input>    
+                        <input type="radio" required name="status" value="s"> Ativo </input>
                     </label>
 
                     <label class="ml-3">
