@@ -152,4 +152,24 @@ class database
         $this->executar($query);
         return true;
     }
+    /** 
+     * Método responsável por executar atualizações no banco de dados
+     * @params string $where
+     * @param array $values [field => value]
+     * return boolean
+     */
+    public function update($where, $values) 
+    {
+        //Dados da query
+        $fields  = array_keys($values);
+        $valores = array_values($values);
+
+        //Monta query
+        $query = 'UPDATE '.$this->table.' SET '.implode("=?,", $fields).'=? WHERE ' . $where;
+        // echo "<pre>"; print_r($query); echo "<pre>"; exit;
+        
+        //Executar a query
+        $this->executar($query, $valores);
+        return true;
+    }
 }

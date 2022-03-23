@@ -1,10 +1,24 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-define('TITLE', 'Cadastrar Vaga');
+define('TITLE', 'Editar Vaga');
+
 use \App\entity\vaga;
 
-$obvaga = new vaga;
+// Validação do ID
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    header('location: index.php?status=error');
+    exit;
+}
+
+// Consulta Vaga
+$obvaga = vaga::getvagas($_GET['id']);
+
+// Validação da Vaga
+if (!$obvaga instanceof vaga) {
+    header('location: index.php?status=error');
+    exit;
+}
 
 if (isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])) {
     $obvaga->titulo = $_POST['titulo'];
@@ -12,7 +26,7 @@ if (isset($_POST['titulo'], $_POST['descricao'], $_POST['status'])) {
     $obvaga->status = $_POST['status'];
     // echo "<pre>"; print_r($_POST); echo "</pre>"; exit;
 
-    $obvaga->cadastrar();
+    $obvaga->atualizar();
 
     header('location: index.php?status=success');
     exit;

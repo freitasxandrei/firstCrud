@@ -1,9 +1,37 @@
+<?php
+    $mensagem = '';
+    if(isset($_GET['status'])) {
+        switch ($_GET['status']) {
+            case 'success':
+                $mensagem = '<div class="alert alert-success">Ação executada com sucesso!</div>';
+                break;
+            case 'error':
+                $mensagem = '<div class="alert alert-danger">Ação não executada!</div>';
+                    break;
+            default:
+                # code...
+                break;
+        }
+    }
+?>
+
+<?php if($mensagem != '') { ?>
+<section>
+    <?php echo $mensagem; ?>
+</section>
+<?php } ?>
+
 <section>
     <a href="cadastrar">
         <button class="btn btn-success"> Cadastrar </button>
     </a>
 
-    <table class="table bg-light mt-3">
+    <?php if(count($vaga) == 0) { ?>
+    <div class="alert alert-secondary mt-3"> Nenhuma Vaga Encontrada </div>
+
+    <?php } else { ?>
+
+        <table class="table bg-light mt-3">
         <thead>
             <tr>
                 <th>ID</th>
@@ -36,5 +64,7 @@
             <?php } ?>
         </tbody>
     </table>
+
+    <?php } ?>
 
 </section>
